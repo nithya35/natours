@@ -120,6 +120,7 @@ app.use('/api/v1/bookings',bookingRouter);
 app.all('*',(req,res,next)=>{
   next(new AppError(`Can't find ${req.originalUrl} on this server`,404));
 });
+//for all undefined routes
 
 app.use(globalErrorHandler);
 
