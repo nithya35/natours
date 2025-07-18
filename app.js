@@ -18,6 +18,8 @@ const cookieParser = require('cookie-parser');
 
 const compression = require('compression');
 
+const cors = require('cors');
+
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
 
@@ -33,6 +35,20 @@ app.enable('trust proxy');
 
 app.set('view engine','pug'); 
 app.set('views',path.join(__dirname,'views'));
+
+app.use(cors());
+//set Access-Control-Allow-Origin header to *
+//which means everyone
+//we can only allow specific origins
+//for example we have backend at api.natours.com and frontend at natours.com
+// app.use(cors({
+//   origin: 'https://www.natours.com'
+// }))
+//only frontend origin can make requests to api
+
+//browser send an options request when there is preflight phase
+app.options('*',cors());
+//instead of * we can only select specific routes
 
 app.use(express.static(path.join(__dirname,'public')));
 
