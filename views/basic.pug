@@ -1,0 +1,17 @@
+doctype html 
+html
+    head 
+        title Natours | #{tour}
+        link(rel='stylesheet' href='css/style.css')
+        link(rel='shortcut icon' type='image/png' href='img/favicon.png')
+    
+    body
+        h1= tour 
+        h2= user.toUpperCase()
+        // h1 The Park Camper - this is comment which will be converted to html comment in resulting html file
+        -const x=9;
+        //- unbuffered code - not visible in output
+        h2= 2*x
+        //- buffered code visible in output
+
+        p This is just some text
