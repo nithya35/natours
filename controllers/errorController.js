@@ -105,8 +105,6 @@ module.exports = (err, req, res, next)=>{
    else if(process.env.NODE_ENV === 'production'){
       let error = Object.create(err);
 
-      console.log(error);
-
       //casterror comes when an invalid id is accessed
       if(error.name === 'CastError'){
          error = handleCastErrorDB(error);

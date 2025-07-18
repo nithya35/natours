@@ -159,13 +159,13 @@ tourschema.pre(/^find/,function(next){
   next();
 });
 
-tourschema.post(/^find/,function(docs,next){
-  //this function will get access of docs
-  //docs are all documents returned by query
-  console.log(`query took ${Date.now()-this.start} milliseconds`);
-  //console.log(docs);
-  next();
-});
+// tourschema.post(/^find/,function(docs,next){
+//   //this function will get access of docs
+//   //docs are all documents returned by query
+//   console.log(`query took ${Date.now()-this.start} milliseconds`);
+//   //console.log(docs);
+//   next();
+// });
 
 const Tour = mongoose.model('Tour',tourschema);
 module.exports = Tour;
