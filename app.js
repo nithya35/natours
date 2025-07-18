@@ -29,6 +29,8 @@ const usersrouter = require('./routes/userroutes');
 const reviewRouter = require('./routes/reviewRoutes');
 const bookingRouter = require('./routes/bookingRoutes');
 
+const bookingController = require('./controllers/bookingController');
+
 const app = express();
 
 app.enable('trust proxy');
@@ -94,6 +96,12 @@ const limiter = rateLimit({
 //this will allow max 100 requests from an IP in an hour
 
 app.use('/api',limiter);
+
+app.post('/webhook-checkout',express.raw({type: 'application/json'}),bookingController.webhookCheckout);
+//generally stripe will do post request to this
+//we need body coming with request in raw form but not as json
+//we added body parsing as a raw body
+//thatswhy we define this route here
 
 app.use(express.json());
 
